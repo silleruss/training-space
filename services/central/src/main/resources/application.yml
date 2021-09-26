@@ -1,0 +1,3 @@
+cicada:
+  endpoint:
+    temp-api: localhost:8081
