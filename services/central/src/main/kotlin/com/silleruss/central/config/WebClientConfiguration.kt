@@ -7,7 +7,7 @@ import org.springframework.web.reactive.function.client.WebClient
 
 @Configuration
 class WebClientConfiguration(
-    @Value("\${cicada.endpoint.temp-api}") private val mainUrl: String,
+    @Value("\${central.endpoint.temp-api}") private val mainUrl: String,
     private val webClientBuilder: WebClient.Builder
 ) {
 
