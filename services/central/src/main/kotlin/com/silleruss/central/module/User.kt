@@ -1,12 +1,26 @@
 package com.silleruss.central.module
 
 import java.time.LocalDateTime
+import javax.persistence.*
 
-// FIXME: set jpa and entity
-data class User(
-    val id: Int = 0,
-    val nickname: String,
-    val email: String,
-    val createdAt: LocalDateTime,
-    val updatedAt: LocalDateTime
-)
+@Entity
+@Table(name = "users")
+class User {
+
+    @Id
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    val id: Int = 0
+
+    @Column
+    val nickname: String = ""
+
+    @Column
+    val email: String = ""
+
+    @Column
+    val createdAt: LocalDateTime = LocalDateTime.now()
+
+    @Column
+    val updatedAt: LocalDateTime = LocalDateTime.now()
+
+}
