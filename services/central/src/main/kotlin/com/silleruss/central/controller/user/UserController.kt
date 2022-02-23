@@ -1,11 +1,10 @@
 package com.silleruss.central.controller.user
 
 import com.silleruss.central.model.UserDto
+import com.silleruss.central.model.users.CreateUserRequest
+import com.silleruss.central.model.users.UpdateUserRequest
 import com.silleruss.central.service.UserService
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RequestParam
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 import reactor.core.publisher.Mono
 
 @RestController
@@ -15,8 +14,21 @@ class UserController(
 ) {
 
     @GetMapping
-    fun temp(@RequestParam id: Int): Mono<UserDto> {
+    fun get(@RequestParam id: Int): Mono<UserDto> {
         return service.get(id)
+    }
+
+    @PostMapping
+    fun create(@RequestBody body: CreateUserRequest): Mono<UserDto> {
+        return service.create(body)
+    }
+
+    @PutMapping("/{id}")
+    fun update(
+        @PathVariable id: Int,
+        @RequestBody body: UpdateUserRequest
+    ): Mono<UserDto> {
+        return service.update(id, body)
     }
 
 }
