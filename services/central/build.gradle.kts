@@ -1,3 +1,4 @@
+import org.jetbrains.kotlin.builtins.StandardNames.FqNames.annotation
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
@@ -5,6 +6,10 @@ plugins {
 	id("io.spring.dependency-management") version "1.0.11.RELEASE"
 	kotlin("jvm") version "1.6.10"
 	kotlin("plugin.spring") version "1.6.10"
+}
+
+allOpen {
+	annotation("javax.persistence.Entity")
 }
 
 group = "com.silleruss"
@@ -24,9 +29,9 @@ dependencies {
 	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor:1.6.0-native-mt")
 	implementation ("io.arrow-kt:arrow-fx-coroutines:1.0.1")
 	developmentOnly("org.springframework.boot:spring-boot-devtools:2.6.3")
+	runtimeOnly("com.h2database:h2:2.1.210")
 	testImplementation("org.springframework.boot:spring-boot-starter-test:2.6.3")
 	testImplementation("io.projectreactor:reactor-test:3.4.14")
-	testImplementation("com.h2database:h2:2.1.210")
 }
 
 tasks.withType<KotlinCompile> {
