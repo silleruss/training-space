@@ -3,6 +3,10 @@ central:
     temp-api: localhost:8081
 
 spring:
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
   datasource:
     hikari:
       jdbc-url: jdbc:h2:mem://localhost/~/test_db;
