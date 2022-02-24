@@ -5,22 +5,21 @@ import javax.persistence.*
 
 @Entity
 @Table(name = "users")
-class User {
-
+class User(
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    val id: Int = 0
+    val id: Int = 0,
 
     @Column
-    val nickname: String = ""
+    val nickname: String = "",
 
     @Column
-    val email: String = ""
+    val email: String = "",
 
     @Column
-    val createdAt: LocalDateTime = LocalDateTime.now()
+    val createdAt: LocalDateTime = LocalDateTime.now(),
 
     @Column
     val updatedAt: LocalDateTime = LocalDateTime.now()
 
-}
+)
