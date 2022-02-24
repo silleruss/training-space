@@ -1,5 +1,7 @@
 package com.silleruss.central.service
 
+import arrow.core.Either
+import com.silleruss.central.core.Either.Companion.toEither
 import com.silleruss.central.model.UserDto
 import com.silleruss.central.model.users.CreateUserRequest
 import com.silleruss.central.model.users.UpdateUserRequest
@@ -24,12 +26,32 @@ class UserService(
     }
 
     fun create(body: CreateUserRequest): Mono<UserDto> {
-        TODO()
+        val user = body.toUser()
+        val saved = repository.save(user)
+
+        return saved.convert().toMono()
     }
 
-    fun update(id: Int, body: UpdateUserRequest): Mono<UserDto> {
-        TODO()
+    fun update(id: Int, body: UpdateUserRequest): Either<Throwable, Mono<UserDto>> {
+        val user = repository.findById(id)
+        val updated = user.map { body.toEntity(it.id) }
+        val saved = updated.map { repository.save(it) }
+
+        return saved
+            .map { it.convert().toMono() }
+            .toEither()
     }
+
+    private fun CreateUserRequest.toUser(): User = User(
+        nickname = nickname,
+        email = email
+    )
+
+    private fun UpdateUserRequest.toEntity(id: Int): User = User(
+        id = id,
+        nickname = nickname,
+        email = email
+    )
 
     private fun User.convert(): UserDto = UserDto(
         nickname = nickname,
