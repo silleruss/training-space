@@ -1,7 +1,8 @@
 package com.silleruss.central.service
 
 import arrow.core.Either
-import com.silleruss.central.core.Either.Companion.toEither
+import com.silleruss.central.core.exceptions.EntityNotFoundException
+import com.silleruss.central.core.extensions.toEither
 import com.silleruss.central.model.UserDto
 import com.silleruss.central.model.users.CreateUserRequest
 import com.silleruss.central.model.users.UpdateUserRequest
@@ -33,13 +34,15 @@ class UserService(
     }
 
     fun update(id: Int, body: UpdateUserRequest): Either<Throwable, Mono<UserDto>> {
-        val user = repository.findById(id)
+        val user = repository
+            .findById(id)
+            .toEither { EntityNotFoundException }
+
         val updated = user.map { body.toEntity(it.id) }
         val saved = updated.map { repository.save(it) }
 
         return saved
             .map { it.convert().toMono() }
-            .toEither()
     }
 
     private fun CreateUserRequest.toUser(): User = User(
