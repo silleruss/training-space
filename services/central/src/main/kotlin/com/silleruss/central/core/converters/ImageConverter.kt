@@ -1,3 +1,5 @@
+package com.silleruss.central.core.converters
+
 import org.springframework.core.io.ClassPathResource
 import java.awt.AlphaComposite
 import java.awt.Color
