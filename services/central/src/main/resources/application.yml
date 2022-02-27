@@ -16,3 +16,8 @@ spring:
   h2:
     console:
       enabled: true
+  security:
+    user:
+      password: test_123
+    filter:
+      order: 10 # priorities custom filter
