@@ -1,4 +1,6 @@
-# Develop-blog
+# Nixon Develop Blog Codes
 
-- Commit on sample codes written in kotlin
+### Environments
+- spring boot, kotlin, webflux based
+- for practice or test
 - [개발 블로그](https://silleruss.tistory.com/)
