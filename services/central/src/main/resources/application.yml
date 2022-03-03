@@ -17,7 +17,8 @@ spring:
     console:
       enabled: true
   security:
-    user:
-      password: test_123
-    filter:
-      order: 10 # priorities custom filter
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8989/oauth
+
