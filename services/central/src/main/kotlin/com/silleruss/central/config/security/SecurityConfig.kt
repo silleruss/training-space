@@ -1,4 +1,4 @@
-package com.silleruss.central.core.security
+package com.silleruss.central.config.security
 
 import org.springframework.http.HttpMethod
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
