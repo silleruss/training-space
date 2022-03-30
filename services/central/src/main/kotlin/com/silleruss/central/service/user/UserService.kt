@@ -1,13 +1,13 @@
-package com.silleruss.central.service
+package com.silleruss.central.service.user
 
 import arrow.core.Either
 import com.silleruss.central.core.exceptions.EntityNotFoundException
 import com.silleruss.central.core.extensions.toEither
-import com.silleruss.central.model.UserDto
-import com.silleruss.central.model.users.CreateUserRequest
-import com.silleruss.central.model.users.UpdateUserRequest
-import com.silleruss.central.module.User
-import com.silleruss.central.repository.UserRepository
+import com.silleruss.central.model.user.UserDto
+import com.silleruss.central.model.user.CreateUserRequest
+import com.silleruss.central.model.user.UpdateUserRequest
+import com.silleruss.central.modules.user.User
+import com.silleruss.central.repository.user.UserRepository
 import org.hibernate.Session
 import org.springframework.stereotype.Service
 import reactor.core.publisher.Mono

@@ -1,10 +1,10 @@
 package com.silleruss.central.controller.user
 
-import com.silleruss.central.model.UserDto
-import com.silleruss.central.model.users.CreateUserRequest
-import com.silleruss.central.model.users.UpdateUserRequest
-import com.silleruss.central.model.users.UpdateUserResponse
-import com.silleruss.central.service.UserService
+import com.silleruss.central.model.user.UserDto
+import com.silleruss.central.model.user.CreateUserRequest
+import com.silleruss.central.model.user.UpdateUserRequest
+import com.silleruss.central.model.user.UpdateUserResponse
+import com.silleruss.central.service.user.UserService
 import org.springframework.web.bind.annotation.*
 import reactor.core.publisher.Mono
 

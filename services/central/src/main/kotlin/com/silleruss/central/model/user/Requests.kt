@@ -1,4 +1,4 @@
-package com.silleruss.central.model.users
+package com.silleruss.central.model.user
 
 data class CreateUserRequest(
     val nickname: String,

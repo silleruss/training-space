@@ -1,4 +1,4 @@
-package com.silleruss.central.module
+package com.silleruss.central.modules.user
 
 import java.time.LocalDateTime
 import javax.persistence.*
